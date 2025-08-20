@@ -29,5 +29,5 @@ O projeto utiliza **H2 Database** para ambiente de testes e pode ser facilmente 
 
 ### 1️⃣ Clonar o repositório
 ```bash
-git clone https://github.com/seu-usuario/cadastroninja.git
-cd cadastroninja
+git clone https://github.com/seu-usuario/CadastroNinja.git
+cd CadastroNinja
