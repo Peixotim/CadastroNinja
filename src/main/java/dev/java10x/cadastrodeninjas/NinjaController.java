@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping
+@RequestMapping 
 public class NinjaController {
 
     @GetMapping("/boasvindas") //E aqui que passa o valor localhost:8080/boasVindas
