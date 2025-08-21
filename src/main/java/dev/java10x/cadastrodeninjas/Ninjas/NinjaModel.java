@@ -1,6 +1,8 @@
-package dev.java10x.cadastrodeninjas;
-
+package dev.java10x.cadastrodeninjas.Ninjas;
+import dev.java10x.cadastrodeninjas.Missoes.MissoesModel;
 import jakarta.persistence.*;
+import dev.java10x.cadastrodeninjas.Missoes.MissoesModel;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_cadastro")
@@ -12,6 +14,14 @@ public class NinjaModel {
     private String email;
     private String aldeia;
     private int idade;
+
+    //private List<MissoesModel> missoes;
+
+    @ManyToOne //Um ninja tem uma unica missao
+    @JoinColumn(name = "missoes_id") // Foreing Key (Chave Estrangeira)
+    private MissoesModel missoes;
+
+
     public NinjaModel(){
 
     }
@@ -56,6 +66,10 @@ public class NinjaModel {
         this.idade = idade;
     }
 
+    public void AdicionarMissao(){
+
+    }
+
     @Override
     public String toString() {
         return "NinjaModel{" +
@@ -65,4 +79,5 @@ public class NinjaModel {
                 ", idade=" + idade +
                 '}';
     }
+
 }
