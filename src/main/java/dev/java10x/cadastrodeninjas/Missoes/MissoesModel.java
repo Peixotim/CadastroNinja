@@ -1,12 +1,17 @@
 package dev.java10x.cadastrodeninjas.Missoes;
 import dev.java10x.cadastrodeninjas.Ninjas.NinjaModel;
 import jakarta.persistence.*;
-
-import java.util.ArrayList;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import java.util.List;
+
 
 @Entity
 @Table(name = "tb_missoes")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class MissoesModel {
 
     @Id
@@ -18,31 +23,5 @@ public class MissoesModel {
 
     @OneToMany(mappedBy = "missoes")
     private List<NinjaModel> ninjas; //Aqui sao muitos ninjas
-
-    public String getNome(){
-        return nome;
-    }
-
-    public String getDificuldade(){
-        return dificuldade;
-    }
-
-    public String getDescricao(){
-        return descricao;
-    }
-
-    public void setNome(String nome){
-        this.nome = nome;
-    }
-
-    public void setDificuldade(String dificuldade){
-        this.dificuldade = dificuldade;
-    }
-
-    public void setDescricao(String descricao){
-        this.descricao = descricao;
-    }
-
-
 
 }
