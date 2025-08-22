@@ -21,7 +21,7 @@ public class MissoesModel {
     private String dificuldade;
     private String descricao;
 
-    @OneToMany(mappedBy = "missoes")
+    @OneToMany(mappedBy = "missoes") //Um para muitos (Uma missao sera para varios ninjas)
     private List<NinjaModel> ninjas; //Aqui sao muitos ninjas
 
 }
