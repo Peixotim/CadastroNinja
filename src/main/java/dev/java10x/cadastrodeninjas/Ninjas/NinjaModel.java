@@ -13,12 +13,21 @@ import lombok.NoArgsConstructor;
 public class NinjaModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id ;
+    @Column(name = "id")
+    private Long Id ; //Primary key
+
+    @Column(name = "nome")
     private String nome;
-    @Column(unique = true)
+
+    @Column(unique = true) //Gerado com nome email
     private String email;
+
+    @Column(name = "nome_aldeia")
     private String aldeia;
+
+    @Column(name = "idade")
     private int idade;
+
     @ManyToOne //Um ninja tem uma unica missao
     @JoinColumn(name = "missoes_id") // Foreing Key (Chave Estrangeira)
     private MissoesModel missoes;
