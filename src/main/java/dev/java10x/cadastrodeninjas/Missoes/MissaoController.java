@@ -28,7 +28,7 @@ public class MissaoController {
         return "Alterando Missoes por ID";
     }
 
-    @DeleteMapping("/deletarMissao")
+    @DeleteMapping("/deletar")
     public String deletarMissoes(){
         return  "Deletando Ninja";
     }
