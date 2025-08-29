@@ -26,15 +26,14 @@ public class NinjaController {
         return "Criando Ninja";
     }
 
-    @JsonIgnore
-    @GetMapping("/todos")
+    @GetMapping("/listar")
     public List<NinjaModel> mostrarTodosOsNinjas(){
         return ninjaService.listaNinjas();
     }
 
-    @GetMapping("/todosId")
-    public String mostrarTodosOsNinjasPorId(){
-        return "Mostrando Ninja";
+    @GetMapping("/listar/{id}")
+    public NinjaModel mostrarPorId(@PathVariable Long id){
+        return ninjaService.listarNinjaId(id);
     }
 
     @PutMapping("/alterar")
