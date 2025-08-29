@@ -25,4 +25,9 @@ public class NinjaService {
            Optional<NinjaModel> ninjaId = ninjaRepository.findById(id);
            return ninjaId.orElseThrow(RuntimeException::new);
        }
+
+
+    public NinjaModel adicionarNinja(NinjaModel ninja){
+        return ninjaRepository.save(ninja);
+    }
 }

@@ -14,16 +14,11 @@ public class NinjaController {
         this.ninjaService = ninjaService;
     }
 
-    @GetMapping("/boasvindas") //E aqui que passa o valor localhost:8080/boasVindas
-    public String boasVindas(){
-        return "Essa é minha primeira mensagem nessa rota!";
-    }
-
    //FAZER O CRUD AGORA CREATE READ UPDATE E DELETE
 
-    @PostMapping("/criar")
-    public String criarNinja(){
-        return "Criando Ninja";
+    @PostMapping("/adicionar")
+    public NinjaModel adicionar(@RequestBody NinjaModel ninjaModel){
+        return ninjaService.adicionarNinja(ninjaModel);
     }
 
     @GetMapping("/listar")
