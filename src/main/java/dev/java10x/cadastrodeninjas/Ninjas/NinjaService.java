@@ -1,6 +1,7 @@
 package dev.java10x.cadastrodeninjas.Ninjas;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.stereotype.Service;
@@ -9,25 +10,61 @@ import org.springframework.stereotype.Service;
 public class NinjaService {
 
     private NinjaRepository ninjaRepository;
+    private NinjaMapper ninjaMapper;
 
-    public NinjaService(NinjaRepository ninjaRepository){
+
+    public NinjaService(NinjaRepository ninjaRepository , NinjaMapper ninjaMapper){
         this.ninjaRepository = ninjaRepository;
-    } //Construtor da class NinjaService que passa os dados contidos nela
-
-
-    //Criar todos os nossos metodos
-
-    public List<NinjaModel> listaNinjas(){
-        return ninjaRepository.findAll();
+        this.ninjaMapper = ninjaMapper;
     }
 
-       public NinjaModel listarNinjaId(Long id){
-           Optional<NinjaModel> ninjaId = ninjaRepository.findById(id);
-           return ninjaId.orElseThrow(RuntimeException::new);
-       }
+
+    //CRUD
+
+    //listAll
+    public List<NinjaDTO> list(){
+        List<NinjaModel> model = ninjaRepository.findAll();
+        return model.stream()
+                .map(ninjaMapper::map)
+                .collect(Collectors.toList());
+    }
 
 
-    public NinjaModel adicionarNinja(NinjaModel ninja){
-        return ninjaRepository.save(ninja);
+    //listById
+    public NinjaDTO listId(Long id){
+        Optional<NinjaModel> ninja = ninjaRepository.findById(id);
+
+        return ninja.map(ninjaMapper::map).orElseThrow(RuntimeException::new);
+    }
+
+
+    //Adding
+    public NinjaDTO create(NinjaDTO dto){
+        NinjaModel ninjas = ninjaMapper.map(dto);
+        ninjas = ninjaRepository.save(ninjas);
+        return ninjaMapper.map(ninjas);
+    }
+
+    //Delete
+    public void delete(Long id){
+        if(ninjaRepository.existsById(id)){
+            ninjaRepository.deleteById(id);
+        }else{
+            throw new RuntimeException("Check the id, as it does not exist !");
+        }
+
+    }
+
+    //Alter
+    public NinjaDTO alter(Long id, NinjaDTO ninja){
+        Optional<NinjaModel> ninjaExistente = ninjaRepository.findById(id);
+        if(ninjaExistente.isPresent()){
+            NinjaModel model = ninjaMapper.map(ninja);
+            model.setId(id);
+            NinjaModel ninjaAtualizado = ninjaRepository.save(model);
+            return ninjaMapper.map(ninjaAtualizado);
+        }
+
+        return null ;
     }
 }
