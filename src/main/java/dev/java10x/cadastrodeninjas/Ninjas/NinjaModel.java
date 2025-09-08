@@ -12,7 +12,7 @@ import lombok.ToString;
 @Data // Retorna todos os metodos Getters & Setters
 @NoArgsConstructor // Construtor sem parametro
 @AllArgsConstructor // Construtor com todos os parametros
-@ToString
+@ToString(exclude = "missoes")
 public class NinjaModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

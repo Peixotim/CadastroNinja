@@ -2,8 +2,6 @@ package dev.java10x.cadastrodeninjas.Ninjas;
 
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
 @Component
 public class NinjaMapper {
 
