@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("missoes")
 public class MissaoController {
 
-    private MissoesService missoesService;
+    private final MissoesService missoesService;
 
     public MissaoController(MissoesService missoesService){
         this.missoesService = missoesService;

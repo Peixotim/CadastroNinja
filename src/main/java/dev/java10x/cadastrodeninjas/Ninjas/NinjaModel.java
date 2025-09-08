@@ -5,12 +5,14 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name = "tb_cadastro") //Cria uma tabela e tem a opcao nao obrigatoria de adicionar o nome da tabela tambem
 @Data // Retorna todos os metodos Getters & Setters
 @NoArgsConstructor // Construtor sem parametro
 @AllArgsConstructor // Construtor com todos os parametros
+@ToString
 public class NinjaModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
