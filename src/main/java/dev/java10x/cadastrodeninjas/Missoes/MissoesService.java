@@ -26,7 +26,7 @@ public class MissoesService {
         }
 
         public MissoesDTO listId(Long id){
-            MissoesModel model = missoesRepository.findById(id).orElseThrow(RuntimeException::new);
+            MissoesModel model = missoesRepository.findById(id).orElse(null);
             return missoesMapper.map(model);
         }
 

@@ -1,10 +1,10 @@
 package dev.java10x.cadastrodeninjas.Ninjas;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.stereotype.Service;
+
 
 @Service
 public class NinjaService {
@@ -34,7 +34,7 @@ public class NinjaService {
     public NinjaDTO listId(Long id){
         Optional<NinjaModel> ninja = ninjaRepository.findById(id);
 
-        return ninja.map(ninjaMapper::map).orElseThrow(RuntimeException::new);
+        return ninja.map(ninjaMapper::map).orElse(null);
     }
 
 
@@ -67,4 +67,6 @@ public class NinjaService {
 
         return null ;
     }
+
+
 }
