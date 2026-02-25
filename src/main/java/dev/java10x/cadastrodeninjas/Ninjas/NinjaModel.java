@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.UUID;
+
 @Entity
 @Table(name = "tb_cadastro") //Cria uma tabela e tem a opcao nao obrigatoria de adicionar o nome da tabela tambem
 @Data // Retorna todos os metodos Getters & Setters
@@ -15,9 +17,9 @@ import lombok.ToString;
 @ToString(exclude = "missoes")
 public class NinjaModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id")
-    private Long Id ; //Primary key
+    private UUID Id ; //Primary key
 
     @Column(name = "nome")
     private String nome;
